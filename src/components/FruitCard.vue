@@ -4,7 +4,6 @@ const props = defineProps(["fruit"]);
 
 <template>
   <div class="fruit">
-    <img src="..." alt="...">
     <h2>{{ fruit.name }}</h2>
     <p>Family: {{ fruit.family }}</p>
     <p>Order: {{ fruit.order }}</p>
@@ -29,16 +28,10 @@ const props = defineProps(["fruit"]);
 
   background: rgba(128, 128, 128, 0.4);
   padding: 20px;
-  border-radius: 6px;
-
-  img {
-    width: 100%;
-    max-height: max(25%, 250px);
-    padding: 5px;
-    margin: 10px 0;
-  }
+  border-radius: 12px;
 
   h2 {
+    font-size: 2rem;
     padding-bottom: 1rem;
   }
 
@@ -53,5 +46,11 @@ const props = defineProps(["fruit"]);
       text-align: start;
     }
   }
+}
+
+@media (max-width: 700px) {
+ .fruit {
+   align-items: center;
+ }
 }
 </style>

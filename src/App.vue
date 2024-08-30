@@ -40,7 +40,25 @@ h1 + p {
   margin: 25px;
   padding: 25px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 2.5rem;
+}
+
+@media (max-width: 1500px) {
+ .fruits {
+   grid-template-columns: repeat(3, 1fr);
+ }
+}
+
+@media (max-width: 900px) {
+ .fruits {
+   grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+@media (max-width: 700px) {
+ .fruits {
+   grid-template-columns: repeat(1, 1fr);
+ }
 }
 </style>

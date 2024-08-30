@@ -13,7 +13,7 @@ async fn get_fruits() -> Vec<Fruit> {
 
     println!("{}", url);
 
-    let response = Client::new()
+    let mut response = Client::new()
         .get(url)
         .send()
         .await
@@ -22,12 +22,21 @@ async fn get_fruits() -> Vec<Fruit> {
         .await
         .unwrap();
 
+    for x in response.iter_mut() {
+        x.nutritions.fix();
+    }
+
     response
+}
+
+#[tauri::command]
+fn round_off(num: f32) -> f32 {
+    num.round()
 }
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![get_fruits])
+        .invoke_handler(tauri::generate_handler![get_fruits, round_off])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
